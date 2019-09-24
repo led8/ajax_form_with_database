@@ -1,0 +1,15 @@
+.privacy-notice-container {
+  .left-form {
+    height: 100%;
+    flex: 1;
+    background-color: $purple;
+    padding: 25px;
+    .container-from-left-form {
+    }
+  }
+  .right-form {
+    height: 100%;
+    flex: 2;
+    padding: 25px;
+  }
+}
