@@ -1,3 +1,3 @@
 class Question < ApplicationRecord
-  has_many :answers, dependent: :destroy, inverse_of: :questions
+  has_many :answers, dependent: :destroy, inverse_of: :question
 end

@@ -1,2 +1,14 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<section class="privacy-notice-container">
+  <div class="left-home">
+    <div class="container-from-left">
+      <div class="welcome-message">Welcome !</div>
+      <div class="generator-text">Here is the <strong>Privacy Notice Generator</strong>.
+                                  <br>Ready ? Go to <strong>start</strong>.</div>
+    </div>
+  </div>
+  <div class="right-home">
+    <%= link_to new_privacy_notice_path, remote: true do %>
+      <div class="purple-button">START</div>
+    <% end %>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+.purple-button {
+  padding: 10px 60px;
+  border-radius: 5px;
+  border: 1px solid $purple;
+  font-size: $normal;
+  color: $purple;
+  background: linear-gradient(to right, $purple 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  &:hover {
+    transition: all .3s ease-out;
+    cursor: pointer;
+    color: white;
+    background-position: left bottom;
+  }
+}
