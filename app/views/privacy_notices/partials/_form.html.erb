@@ -4,22 +4,12 @@
 </div>
 
 <div class="right-form">
-  <%= form_with model: privacy_notice, local: true do |form| %>
-    <% if privacy_notice.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(privacy_notice.errors.count, "error") %> prohibited this privacy_notice from being saved:</h2>
-
-        <ul>
-        <% privacy_notice.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
+  <%= form_tag model: privacy_notice, local: true do %>
+    <%= @questions.each_with_index do |question, index| %>
+        <div class="question-<%= index + 1 %> test hidden"><strong><%= index + 1 %></strong> <%= question.title %></div>
     <% end %>
-
-    <div class="field">
-      <%= form.label :type_of_operation %>
-      <%= form.text_field :type_of_operation %>
-    </div>
+    <p class="up purple-button">Monter</p>
+    <p class="down purple-button">Descendre</p>
+    <p class="result"></p>
   <% end %>
 </div>

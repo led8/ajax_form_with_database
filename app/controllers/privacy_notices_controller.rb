@@ -1,6 +1,7 @@
 class PrivacyNoticesController < ApplicationController
   def new
     @privacy_notice = PrivacyNotice.new
+    @questions = Question.all
   end
 
   def create
