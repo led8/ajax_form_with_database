@@ -1,25 +1,22 @@
 $('.privacy-notice-container').html("<%= j render './privacy_notices/partials/form', privacy_notice: @privacy_notice %>")
 
-var up = $('.up')
-var down = $('.down')
-var count = 0
-var result = $('.result')
+var nextQuestion = $('.next-question')
+var previousQuestion = $('.previous-question')
+var count = 1
 
-up.click(function(event) {
+nextQuestion.click(function(event) {
   count += 1
-  $(result).html(count)
 
-  if($('.test').hasClass(`question-${count}`)) {
+  if($('.current-qst').hasClass(`question-${count}`)) {
     $(`form .question-${count}`).removeClass('hidden')
     $(`form .question-${count - 1}`).addClass('hidden')
   }
 })
 
-down.click(function(event) {
+previousQuestion.click(function(event) {
   count -= 1
-  $(result).html(count)
 
-  if($('.test').hasClass(`question-${count}`)) {
+  if($('.current-qst').hasClass(`question-${count}`)) {
     $(`form .question-${count}`).removeClass('hidden')
     $(`form .question-${count + 1}`).addClass('hidden')
   }

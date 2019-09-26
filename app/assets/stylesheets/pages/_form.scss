@@ -11,5 +11,42 @@
     height: 100%;
     flex: 2;
     padding: 25px;
+    form {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      .question-title {
+        color: $purple;
+        font-size: $question;
+        font-family: $Varela;
+        position: absolute;
+        top: 0;
+        text-align: center;
+        width: 100%;
+      }
+      .labels-container {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        .question-label {
+          font-size: $normal;
+        }
+      }
+      .form-buttons {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        .previous-question {
+          color: $purple;
+          font-size: $normal;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
   }
 }

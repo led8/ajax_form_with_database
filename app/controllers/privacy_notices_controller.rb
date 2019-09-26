@@ -8,7 +8,7 @@ class PrivacyNoticesController < ApplicationController
     @privacy_notice = PrivacyNotice.new(privacy_notice_params)
     respond_to do |format|
       if @privacy_notice.save
-        format.html { redirect_to root_path, notice: "Privacy Notice was successfully created." }
+        format.html { redirect_to @privacy_notice, notice: "Privacy Notice was successfully created." }
       else
         format.html { redirect_to root_path, notice: "Nothing created." }
       end

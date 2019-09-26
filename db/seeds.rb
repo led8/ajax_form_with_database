@@ -9,7 +9,7 @@ puts "----- Wait while processing -----"
 # Questions
 q1 = Question.create(title: "What do you want to organize ?", position: 1)
 q2 = Question.create(title: "Who is the organizer ?", position: 2)
-q3 = Question.create(title: "Is the agency under contract with Ubisoft", position: 3) # If Answer.order == 4
+q3 = Question.create(title: "Is the agency under contract with Ubisoft ?", position: 3) # If Answer.order == 4
 q4 = Question.create(title: "Choose the agency", position: 4) # If Answer.order == 4 && Answer.order == 5
 q5 = Question.create(title: "How personal data are collected ?", position: 5)
 q6 = Question.create(title: "Which data will be collected and processed ?", position: 6) # If Answer.order == 11 || Answer.order == 12

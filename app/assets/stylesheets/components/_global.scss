@@ -1,7 +1,7 @@
 
 // Colors
 .orange {
-  color: #FF9900;
+  color: $orange;
 }
 .white {
   color: white;
@@ -15,4 +15,9 @@
 // Display
 .hidden {
   display: none;
+}
+
+// Bakcground
+.purple-background {
+  background-color: $purple;
 }
