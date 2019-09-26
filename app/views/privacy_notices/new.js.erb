@@ -13,6 +13,9 @@ function HandleQuestions(nextQuestion, previousQuestion, count){
       $(`form .question-${count}`).removeClass('hidden')
       $(`form .question-${count - 1}`).addClass('hidden')
     }
+    if(count > 1){
+      previousQuestion.removeClass('hidden');
+    }
   });
 
   previousQuestion.click(function(event) {
@@ -21,6 +24,9 @@ function HandleQuestions(nextQuestion, previousQuestion, count){
     if($('.current-qst').hasClass(`question-${count}`)) {
       $(`form .question-${count}`).removeClass('hidden')
       $(`form .question-${count + 1}`).addClass('hidden')
+    }
+    if(count <= 1){
+      previousQuestion.addClass('hidden');
     }
   });
 }
