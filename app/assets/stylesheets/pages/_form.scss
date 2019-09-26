@@ -28,8 +28,31 @@
         position: absolute;
         top: 50%; left: 50%;
         transform: translate(-50%, -50%);
-        .question-label {
-          font-size: $normal;
+        font-size: $normal;
+        .radio-input {
+          input[type="radio"] {
+            display: none;
+          }
+          input[type="radio"] + label {
+            cursor: pointer;
+            background-color: rgba(196, 196, 196, 0.2);
+            border-radius: 5px;
+            padding: 15px 100px;
+            width: 100%;
+            color: black;
+          }
+          input[type="radio"] + label {
+            &:hover {
+              background-color: rgba(60, 22, 141, .2);
+              transition: all .3s ease-out;
+              color: white;
+            }
+          }
+          input[type="radio"]:checked + label {
+            background-color: $purple;
+            color: white;
+            font-weight: 600;
+          }
         }
       }
       .form-buttons {

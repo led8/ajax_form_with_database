@@ -27,6 +27,9 @@
         font-family: $OpenSans;
         font-size: $normal;
         text-align: center;
+        .mr-robot {
+          font-size: $mr-robot;
+        }
       }
     }
   }

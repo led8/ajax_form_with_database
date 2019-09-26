@@ -1,0 +1,5 @@
+<div class="radio-input">
+  <%= tag.input type: answer.answer_type, label: false, id: answer.order.to_s, value: answer.value,
+                name: answer.parameter %>
+  <%= tag.label answer.label, for: answer.order.to_s %>
+  </div>

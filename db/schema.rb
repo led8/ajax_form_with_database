@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_24_091352) do
+ActiveRecord::Schema.define(version: 2019_09_26_161345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_09_24_091352) do
     t.bigint "question_id"
     t.text "value", default: [], array: true
     t.string "hint_icon"
+    t.string "parameter"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
@@ -34,6 +35,9 @@ ActiveRecord::Schema.define(version: 2019_09_24_091352) do
     t.string "environment"
     t.string "shared_data"
     t.text "reused_data"
+    t.boolean "organizer_under_contract", default: false
+    t.string "agency_name"
+    t.text "data_tag"
   end
 
   create_table "questions", force: :cascade do |t|

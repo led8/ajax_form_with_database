@@ -1,20 +1,73 @@
-.start-button {
-  padding: 10px 60px;
-  border-radius: 5px;
-  border: 1px solid $purple;
-  font-size: $normal;
+// Start button
+.start {
+  position: relative;
   color: $purple;
-  background: linear-gradient(to right, $purple 50%, transparent 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-  &:hover {
-    transition: all .5s ease-out;
-    cursor: pointer;
-    color: white;
-    background-position: left bottom;
+  width: 256px;
+  height: 64px;
+  line-height: 64px;
+  transition: all 0.3s;
+  span {
+    transition: all 0.3s;
+    tranform: scale(1, 1);
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: $OpenSans;
+    font-weight: bolder;
   }
 }
 
+.start::before, .start::after {
+  content: '';
+  position: absolute;
+  transition: all 0.3s;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.start-button::before, .start-button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  transition: all 0.3s;
+  border: 1px solid $purple;
+  border-radius: 5px;
+  background-color: $purple;
+  opacity: .1;
+}
+
+.start-button:hover::after {
+  animation-name: rotatecw;
+  animation-duration: 2s;
+}
+.start-button:hover::before {
+  animation-name: rotateccw;
+  animation-duration: 3s;
+}
+.start-button:hover::after, .start-button:hover::before {
+  left: 96px;
+  width: 64px;
+
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes rotatecw {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+@keyframes rotateccw {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(-360deg);}
+}
+// Next button
 .next-button {
   padding: 10px 60px;
   border-radius: 5px;
@@ -28,3 +81,4 @@
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   }
 }
+

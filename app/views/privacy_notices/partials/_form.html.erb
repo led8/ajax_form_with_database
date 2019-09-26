@@ -10,13 +10,13 @@
         <div class="labels-container">
           <% question.answers.each do |answer| %>
             <% if answer.answer_type == "radio" %>
-              <div class="question-label radio-input"><%= answer.label %></div>
+              <%= render '././privacy_notices/partials/radio_form', answer: answer %>
             <% elsif answer.answer_type == "text" %>
-              <div class="question-label text-input"><%= answer.label %></div>
+              <%= render '././privacy_notices/partials/text_form', answer: answer %>
             <% elsif answer.answer_type == "checkbox" %>
-              <div class="question-label checkbox-input"><%= answer.label %></div>
+              <%= render '././privacy_notices/partials/checkbox_form', answer: answer %>
             <% elsif answer.answer_type == "select" %>
-              <div class="question-label select-input"><%= answer.label %></div>
+              <%= render '././privacy_notices/partials/select_form', answer: answer %>
             <% end %>
           <% end %>
         </div>

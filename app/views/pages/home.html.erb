@@ -2,13 +2,15 @@
   <div class="left-home">
     <div class="container-from-left-home">
       <div class="welcome-message">Welcome !</div>
-      <div class="generator-text">Here is the <strong>Privacy Notice Generator</strong>.
+      <div class="generator-text">Here is the <strong>Privacy Notice Generator</strong> <span class="mr-robot">🤖</span>.
                                   <br>Ready ? Go to <strong>start</strong>.</div>
     </div>
   </div>
   <div class="right-home">
     <%= link_to new_privacy_notice_path, remote: true do %>
-      <div class="start-button">START</div>
+      <div class="start start-button">
+        <span>START</span>
+      </div>
     <% end %>
     <% if notice %>
       <p><%= notice %></p>

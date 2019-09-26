@@ -1,23 +1,27 @@
 $('.privacy-notice-container').html("<%= j render './privacy_notices/partials/form', privacy_notice: @privacy_notice %>")
 
+// Handle buttons
 var nextQuestion = $('.next-question')
 var previousQuestion = $('.previous-question')
 var count = 1
 
-nextQuestion.click(function(event) {
-  count += 1
+function HandleQuestions(nextQuestion, previousQuestion, count){
+  nextQuestion.click(function(event) {
+    count += 1
 
-  if($('.current-qst').hasClass(`question-${count}`)) {
-    $(`form .question-${count}`).removeClass('hidden')
-    $(`form .question-${count - 1}`).addClass('hidden')
-  }
-})
+    if($('.current-qst').hasClass(`question-${count}`)) {
+      $(`form .question-${count}`).removeClass('hidden')
+      $(`form .question-${count - 1}`).addClass('hidden')
+    }
+  });
 
-previousQuestion.click(function(event) {
-  count -= 1
+  previousQuestion.click(function(event) {
+    count -= 1
 
-  if($('.current-qst').hasClass(`question-${count}`)) {
-    $(`form .question-${count}`).removeClass('hidden')
-    $(`form .question-${count + 1}`).addClass('hidden')
-  }
-})
+    if($('.current-qst').hasClass(`question-${count}`)) {
+      $(`form .question-${count}`).removeClass('hidden')
+      $(`form .question-${count + 1}`).addClass('hidden')
+    }
+  });
+}
+HandleQuestions(nextQuestion, previousQuestion, count);
