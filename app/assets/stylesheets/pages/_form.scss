@@ -42,13 +42,13 @@
             color: black;
             text-align: center;
           }
-          input[type="radio"] + label {
-            &:hover {
-              background-color: rgba(60, 22, 141, .2);
-              transition: all .3s ease-out;
-              color: white;
-            }
-          }
+          // input[type="radio"] + label {
+          //   &:hover {
+          //     background-color: rgba(60, 22, 141, .2);
+          //     transition: all .3s ease-out;
+          //     color: white;
+          //   }
+          // }
           input[type="radio"]:checked + label {
             background-color: $purple;
             color: white;

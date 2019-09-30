@@ -4,34 +4,75 @@ $('.privacy-notice-container').html("<%= j render './privacy_notices/partials/fo
 var nextQuestion = $('.next-question'),
     previousQuestion = $('.previous-question'),
     currentQuestion = $('.current-qst'),
+    radioButton = $("input[type=radio]"),
     count = 1;
 
-function HandleQuestions(nextQuestion, previousQuestion, count){
-  nextQuestion.click(function() {
-    count += 1
+function HandleQuestions(previousQuestion, count, radioButton){
+  // Next question
+  radioButton.each(function(){
+    var idVal = $(this).attr("id");
 
-    if(currentQuestion.hasClass(`question-${count}`)) {
-      $(`form .question-${count}`).removeClass('hidden');
-      $(`form .question-${count - 1}`).addClass('hidden');
-    }
-    if(count > 1){
-      previousQuestion.removeClass('hidden');
-    }
+    $(this).click(function(){
+      if($(this).prop("checked") ===  true) {
+        count += 1;
+        let current = currentQuestion.hasClass(`question-${count}`);
+
+        if(current && idVal != "3" && idVal != "10") {
+          setTimeout(function(){
+            $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
+          }, 300);
+          setTimeout(function(){
+            $(`form .question-${count - 1}`).fadeOut(200, function(){$(this).addClass('hidden')});
+          }, 300);
+        }
+        else if(current && idVal == "3"){
+          count = 5;
+          setTimeout(function(){
+            $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
+          }, 300);
+          setTimeout(function(){
+            $(`form .question-${count - 3}`).fadeOut(200, function(){$(this).addClass('hidden')});
+          }, 300);
+        }
+        else if(current && idVal == "10") {
+          count = 7;
+          setTimeout(function(){
+            $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
+          }, 300);
+          setTimeout(function(){
+            $(`form .question-${count - 2}`).fadeOut(200, function(){$(this).addClass('hidden')});
+          }, 300);
+        }
+      }
+      if(count > 1){
+        setTimeout(function(){
+          previousQuestion.removeClass('hidden');
+        }, 400);
+      }
+    });
   });
 
+  // Previous question
   previousQuestion.click(function() {
-    count -= 1
+    count -= 1;
+    let current = currentQuestion.hasClass(`question-${count}`);
 
-    if(currentQuestion.hasClass(`question-${count}`)) {
-      $(`form .question-${count}`).removeClass('hidden');
-      $(`form .question-${count + 1}`).addClass('hidden');
+    if(current) {
+      setTimeout(function(){
+        $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
+      }, 300);
+      setTimeout(function(){
+        $(`form .question-${count + 1}`).fadeOut(200, function(){$(this).removeClass('hidden')});
+      }, 300);
     }
     if(count <= 1){
-      previousQuestion.addClass('hidden');
+      setTimeout(function(){
+        previousQuestion.addClass('hidden');
+      }, 400);
     }
   });
 }
-HandleQuestions(nextQuestion, previousQuestion, count);
+HandleQuestions(previousQuestion, count, radioButton);
 
 // Prevent enter key submit
 $('form').on('keypress', e => {
