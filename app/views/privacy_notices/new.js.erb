@@ -1,29 +1,30 @@
 $('.privacy-notice-container').html("<%= j render './privacy_notices/partials/form', privacy_notice: @privacy_notice %>")
 
 // Handle buttons
-var nextQuestion = $('.next-question')
-var previousQuestion = $('.previous-question')
-var count = 1
+var nextQuestion = $('.next-question'),
+    previousQuestion = $('.previous-question'),
+    currentQuestion = $('.current-qst'),
+    count = 1;
 
 function HandleQuestions(nextQuestion, previousQuestion, count){
-  nextQuestion.click(function(event) {
+  nextQuestion.click(function() {
     count += 1
 
-    if($('.current-qst').hasClass(`question-${count}`)) {
-      $(`form .question-${count}`).removeClass('hidden')
-      $(`form .question-${count - 1}`).addClass('hidden')
+    if(currentQuestion.hasClass(`question-${count}`)) {
+      $(`form .question-${count}`).removeClass('hidden');
+      $(`form .question-${count - 1}`).addClass('hidden');
     }
     if(count > 1){
       previousQuestion.removeClass('hidden');
     }
   });
 
-  previousQuestion.click(function(event) {
+  previousQuestion.click(function() {
     count -= 1
 
-    if($('.current-qst').hasClass(`question-${count}`)) {
-      $(`form .question-${count}`).removeClass('hidden')
-      $(`form .question-${count + 1}`).addClass('hidden')
+    if(currentQuestion.hasClass(`question-${count}`)) {
+      $(`form .question-${count}`).removeClass('hidden');
+      $(`form .question-${count + 1}`).addClass('hidden');
     }
     if(count <= 1){
       previousQuestion.addClass('hidden');
@@ -31,3 +32,34 @@ function HandleQuestions(nextQuestion, previousQuestion, count){
   });
 }
 HandleQuestions(nextQuestion, previousQuestion, count);
+
+// Prevent enter key submit
+$('form').on('keypress', e => {
+  if (e.keyCode == 13) {
+      return false;
+  }
+});
+
+// Handle questions conditions
+function HandleQuestionsConditions(){
+  $("input[type='radio']").each(function(index, element){
+    var idVal = $(this).attr("id");
+    $(this).click(function(){
+      if($(this).prop("checked") ===  true){
+        if(idVal == "4"){
+          console.log($("label[for='"+idVal+"']").text())
+        } else {
+          console.log(`Vous avez sélectionné ${$("label[for='"+idVal+"']").text()}`)
+        }
+      }
+    })
+  })
+}
+HandleQuestionsConditions();
+
+// $("input[type='radio']:checked").each(function() {
+//   var idVal = $(this).attr("id");
+//   alert($("label[for='"+idVal+"']").text());
+// });
+
+

@@ -38,8 +38,9 @@
             background-color: rgba(196, 196, 196, 0.2);
             border-radius: 5px;
             padding: 15px 100px;
-            width: 100%;
+            width: 420px;
             color: black;
+            text-align: center;
           }
           input[type="radio"] + label {
             &:hover {
@@ -60,14 +61,19 @@
         bottom: 0;
         width: 100%;
         display: flex;
-        justify-content: space-between;
         align-items: flex-end;
         .previous-question {
           color: $purple;
           font-size: $normal;
+          position: absolute;
+          left: 0;
           &:hover {
             cursor: pointer;
           }
+        }
+        .next-question {
+          position: absolute;
+          right: 0;
         }
       }
     }

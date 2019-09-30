@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_161345) do
+ActiveRecord::Schema.define(version: 2019_09_30_094505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_09_26_161345) do
     t.text "value", default: [], array: true
     t.string "hint_icon"
     t.string "parameter"
+    t.text "hint_about_request"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
