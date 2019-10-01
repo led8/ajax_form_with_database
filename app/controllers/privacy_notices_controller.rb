@@ -17,7 +17,7 @@ class PrivacyNoticesController < ApplicationController
         format.html { redirect_to @privacy_notice, notice: "Privacy Notice was successfully created." }
         format.json { render :show, status: :created, location: @privacy_notice }
       else
-        format.html { redirect_to root_path, notice: "Nothing created." }
+        format.html { redirect_to root_path, notice: "An error occured please contact IT" }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
       format.js

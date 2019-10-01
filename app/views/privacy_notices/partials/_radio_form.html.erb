@@ -1,6 +1,24 @@
-<div class="radio-input">
-  <%= tag.input type: answer.answer_type, label: false, id: answer.order.to_s, value: answer.value,
-                name: answer.parameter %>
-  <%= tag.label answer.label, for: answer.order.to_s %>
-</div>
+<% if answer.hint %>
+<!--   <div id="answer-modal-container">
+    <div class="modal-background">
+      <div class="modal">
+        <h2>I'm a modal</h2>
+        <%= answer.value %>
+      </div>
+    </div>
+  </div> -->
+  <div class="radio-input">
+    <div class="hint" id="one">?</div>
+    <div class="test hidden"><%= answer.value %></div>
+    <%= tag.input type: answer.answer_type, label: false, id: answer.order.to_s, value: answer.value,
+                  name: answer.parameter %>
+    <%= tag.label answer.label, for: answer.order.to_s %>
+  </div>
+<% else %>
+  <div class="radio-input">
+    <%= tag.input type: answer.answer_type, label: false, id: answer.order.to_s, value: answer.value,
+                  name: answer.parameter %>
+    <%= tag.label answer.label, for: answer.order.to_s %>
+  </div>
+<% end %>
 

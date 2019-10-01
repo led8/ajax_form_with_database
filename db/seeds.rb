@@ -15,15 +15,17 @@ q5 = Question.create(title: "How personal data are collected ?", position: 5)
 q6 = Question.create(title: "Which data will be collected and processed ?", position: 6) # If Answer.order == 11 || Answer.order == 12
 q7 = Question.create(title: "On which environment is the contest organized ?", position: 7)
 q8 = Question.create(title: "Is the data shared publicly ?", position: 8)
-q9 = Question.create(title: "For what purpose(s) will the data be reused", position: 9, hint: "Please check only the usecases for which you will reuse the data collected about the entrants",
-                    hint_icon: "<i class='fas fa-exclamation-triangle white'></i>")
+q9 = Question.create(title: "For what purpose(s) will the data be reused", position: 9,
+                     hint: "Please check only the usecases for which you will reuse the data collected about the entrants",
+                     hint_icon: "<i class='fas fa-exclamation-triangle white'></i>")
 
 puts "***** New questions created *****"
 
 # Answers
 Answer.create(label: "A contest",
               value: ",1,",
-              hint: nil, hint_header: nil,
+              hint: nil,
+              hint_header: nil,
               answer_type: "radio",
               order: 1,
               parameter: "type_of_operation",
@@ -78,7 +80,8 @@ Answer.create(label: "No",
 
 Answer.create(label: "Agency 1",
               value: ",7,",
-              hint: nil, hint_header: nil,
+              hint: nil,
+              hint_header: nil,
               answer_type: "radio",
               order: 7,
               parameter: "agency_name",

@@ -1,15 +1,14 @@
 $('.privacy-notice-container').html("<%= j render './privacy_notices/partials/form', privacy_notice: @privacy_notice %>")
 
-// Handle buttons
 var nextQuestion = $('.next-question'),
     previousQuestion = $('.previous-question'),
     currentQuestion = $('.current-qst'),
     radioButton = $("input[type=radio]"),
     checkboxButton = $("input[type=checkbox]"),
+    hintButton = $('.hint'),
     count = 1;
 
-function HandleQuestions(count, radioButton, checkboxButton, nextQuestion){
-  // Next question
+function HandleNextQuestion(count, radioButton, checkboxButton, nextQuestion){
   radioButton.each(function(){
     var idVal = $(this).attr("id")
 
@@ -83,7 +82,7 @@ function HandleQuestions(count, radioButton, checkboxButton, nextQuestion){
   //   }
   // });
 }
-HandleQuestions(count, radioButton, checkboxButton, nextQuestion);
+HandleNextQuestion(count, radioButton, checkboxButton, nextQuestion);
 
 // Prevent enter key submit
 $('form').on('keypress', e => {
@@ -114,4 +113,19 @@ HandleQuestionsConditions();
 //   alert($("label[for='"+idVal+"']").text());
 // });
 
+function HandleModal(hintButton){
+  hintButton.each(function(){
+    $(this).click(function(){
+      $('.test').removeClass('hidden');
+    //   var hintId = $(this).attr('id');
+    //   $('#answer-modal-container').removeAttr('class').addClass(hintId);
+    //   $('body').addClass('modal-active');
+    })
+  })
+  // $('#answer-modal-container').click(function(){
+  //   $(this).addClass('out');
+  //   $('body').removeClass('modal-active');
+  // });
+};
+HandleModal(hintButton);
 
