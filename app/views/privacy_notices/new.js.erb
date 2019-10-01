@@ -5,12 +5,13 @@ var nextQuestion = $('.next-question'),
     previousQuestion = $('.previous-question'),
     currentQuestion = $('.current-qst'),
     radioButton = $("input[type=radio]"),
+    checkboxButton = $("input[type=checkbox]"),
     count = 1;
 
-function HandleQuestions(previousQuestion, count, radioButton){
+function HandleQuestions(count, radioButton, checkboxButton, nextQuestion){
   // Next question
   radioButton.each(function(){
-    var idVal = $(this).attr("id");
+    var idVal = $(this).attr("id")
 
     $(this).click(function(){
       if($(this).prop("checked") ===  true) {
@@ -44,35 +45,45 @@ function HandleQuestions(previousQuestion, count, radioButton){
           }, 300);
         }
       }
-      if(count > 1){
-        setTimeout(function(){
-          previousQuestion.removeClass('hidden');
-        }, 400);
-      }
     });
   });
 
-  // Previous question
-  previousQuestion.click(function() {
-    count -= 1;
-    let current = currentQuestion.hasClass(`question-${count}`);
+  // End of form
+  checkboxButton.each(function(){
+    var idVal = $(this).attr("id")
 
-    if(current) {
-      setTimeout(function(){
-        $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
-      }, 300);
-      setTimeout(function(){
-        $(`form .question-${count + 1}`).fadeOut(200, function(){$(this).removeClass('hidden')});
-      }, 300);
-    }
-    if(count <= 1){
-      setTimeout(function(){
-        previousQuestion.addClass('hidden');
-      }, 400);
-    }
+    $(this).click(function(){
+      if($(this).prop("checked") === true){
+        console.log(idVal)
+        setTimeout(function(){
+          nextQuestion.removeClass('hidden');
+        }, 400)
+      }
+    })
   });
+
+
+  // Previous question
+  // previous.click(function() {
+  //   count -= 1
+  //   let current = currentQuestion.hasClass(`question-${count}`)
+
+  //   if(current) {
+  //     setTimeout(function(){
+  //       $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
+  //     }, 300)
+  //     setTimeout(function(){
+  //        $(`form .question-${count + 1}`).fadeOut(200, function(){$(this).removeClass('hidden')});
+  //     }, 300)
+  //   }
+  //   if(count <= 1){
+  //     setTimeout(function(){
+  //       previousQuestion.addClass('hidden');
+  //     }, 400)
+  //   }
+  // });
 }
-HandleQuestions(previousQuestion, count, radioButton);
+HandleQuestions(count, radioButton, checkboxButton, nextQuestion);
 
 // Prevent enter key submit
 $('form').on('keypress', e => {

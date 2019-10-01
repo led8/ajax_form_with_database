@@ -3,7 +3,7 @@
 </div>
 
 <div class="right-form">
-  <%= form_tag model: privacy_notice, local: true do %>
+  <%= form_tag @privacy_notice do %>
     <% @questions.each_with_index do |question, index| %>
       <div class="current-qst question-<%= index + 1 %> <%= question.position == 1 ? '' : 'hidden'%>">
         <div class="question-title"><%= question.title %></div>
@@ -20,12 +20,12 @@
             <% end %>
           <% end %>
         </div>
-        <div class="form-buttons">
-          <span class="previous-question hidden">Back</span>
-          <span class="next-question next-button hidden purple-background current-btn-<%= index + 1 %>">Next</span>
-        </div>
       </div>
     <% end %>
-
+    <div class="form-buttons">
+      <div class="previous-question hidden">Back</div>
+      <%= submit_tag "Next", class: "next-question next-button purple-background hidden" %>
+      <!-- <div class="next-question next-button purple-background hidden">Next</div> -->
+    </div>
   <% end %>
 </div>

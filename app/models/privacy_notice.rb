@@ -1,5 +1,4 @@
 class PrivacyNotice < ApplicationRecord
-  serialize :collected_data, Array
   serialize :data_tag, Array
   serialize :reused_data, Array
 
@@ -41,9 +40,9 @@ class PrivacyNotice < ApplicationRecord
   def convert_agency_name
     @answers = Answer.all
     if self.agency_name == "7"
-      self.agency_name = "a chargé #{@answer.where(value: '7'.split).last.label}"
+      self.agency_name = "a chargé #{@answers.where(value: '7'.split).last.label}"
     elsif self.agency_name == "8"
-      self.agency_name = "a chargé '#{@answer.where(value: '7'.split).last.label}'"
+      self.agency_name = "a chargé '#{@answers.where(value: '7'.split).last.label}'"
     elsif self.agency_name == "9"
       self.agency_name = nil
     end
@@ -52,24 +51,24 @@ class PrivacyNotice < ApplicationRecord
   def convert_collected_data
     @answers = Answer.all
     if self.collected_data == "10"
-      self.collected_data = "#{@answer.where(value: '10'.split).last.label}"
+      self.collected_data = "#{@answers.where(value: '10'.split).last.label}"
     elsif self.collected_data == "11"
-      self.collected_data = "#{@answer.where(value: '11'.split).last.label}"
+      self.collected_data = "#{@answers.where(value: '11'.split).last.label}"
     elsif self.collected_data == "12"
-      self.collected_data = "#{@answer.where(value: '12'.split).last.label}"
+      self.collected_data = "#{@answers.where(value: '12'.split).last.label}"
     end
   end
 
   def convert_environment
     @answers = Answer.all
     if self.environment == "14"
-      self.environment = "#{@answer.where(value: '14'.split).last.label}"
+      self.environment = "#{@answers.where(value: '14'.split).last.label}"
     elsif self.environment == "15"
-      self.environment = "#{@answer.where(value: '15'.split).last.label}"
+      self.environment = "#{@answers.where(value: '15'.split).last.label}"
     elsif self.environment == "16"
-      self.environment = "#{@answer.where(value: '16'.split).last.label}"
+      self.environment = "#{@answers.where(value: '16'.split).last.label}"
     elsif self.environment == "17"
-      self.environment = "#{@answer.where(value: '17'.split).last.label}"
+      self.environment = "#{@answers.where(value: '17'.split).last.label}"
     end
   end
 
@@ -82,19 +81,29 @@ class PrivacyNotice < ApplicationRecord
   end
 
   def convert_reused_data
-    if self.reused_data == "20"
-      self.reused_data = nil
-    elsif self.reused_data == "21"
-      self.reused_data = "à des fins promotionnelles et marketing / par les personnes destinataires des messages promotionnels ou marketing intégrant votre contenu".split('/')
-    elsif self.reused_data == "22"
-      self.resued_data = "vous envoyer des enquêtes des satisfaction / vous envoie des enquêtes de satisfaction".split('/')
-    elsif self.reused_data == "23"
-      self.reused_data == "pour élaborer des statistiques / réalise des statistiques".split('/')
-    elsif self.reused_data == "24"
-      self.reused_data = "des offres promotionnelles.".split('.')
-    elsif self.reused_data == "25"
-      self.reused_data = []
+    if self.reused_data.include? "20"
+      self.reused_data.delete "20"
+      self.reused_data << { in_game: nil }
+    end
+    if self.reused_data.include? "21"
+      self.reused_data.delete "21"
+      self.reused_data << { marketing: "à des fins promotionnelles et marketing/par les personnes destinataires des messages promotionn ou marketing intégrant votre contenu".split('/') }
+    end
+    if self.reused_data.include? "22"
+      self.reused_data.delete "22"
+      self.reused_data << { survey: "vous envoyer des enquêtes des satisfaction/vous envoie des enquêtes de satisfaction".split('/') }
+    end
+    if self.reused_data.include? "23"
+      self.reused_data.delete "23"
+      self.reused_data << { stats: "pour élaborer des statistiques/réalise des statistiques".split('/') }
+    end
+    if self.reused_data.include? "24"
+      self.reused_data.delete "24"
+      self.reused_data << { promotional: "des offres promotionnelles.".split('.') }
+    end
+    if self.reused_data.include? "25"
+      self.reused_data.delete "25"
+      self.reused_data << { other: nil }
     end
   end
-
 end

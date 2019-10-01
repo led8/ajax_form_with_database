@@ -1,1 +1,12 @@
-<%= params %>
+<div class="container" style="padding: 100px; text-align: center">
+  <%= @privacy_notice.attributes %><br><br><br>
+  <strong>Type of operation : </strong>  <%= @privacy_notice.type_of_operation %><br>
+  <strong>Organizer : </strong>  <%= @privacy_notice.organizer %><br>
+  <strong>Collected data : </strong>  <%= @privacy_notice.collected_data %><br>
+  <strong>Environment : </strong>  <%= @privacy_notice.environment %><br>
+  <strong>Shared data : </strong>  <%= @privacy_notice.shared_data %><br>
+  <strong>Reused data : </strong>  <%= @privacy_notice.reused_data %><br>
+  <strong>Organizer under contract : </strong>  <%= @privacy_notice.organizer_under_contract %><br>
+  <strong>Agency name : </strong>  <%= @privacy_notice.agency_name %><br>
+  <strong>Data tag : </strong>  <%= @privacy_notice.data_tag %>
+</div>
