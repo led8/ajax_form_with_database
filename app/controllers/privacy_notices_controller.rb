@@ -16,7 +16,6 @@ class PrivacyNoticesController < ApplicationController
 
   def create
     @privacy_notice = PrivacyNotice.new(privacy_notice_params)
-    puts params
     respond_to do |format|
       if @privacy_notice.save
         format.html { redirect_to @privacy_notice, notice: "Privacy Notice was successfully created." }
@@ -26,6 +25,24 @@ class PrivacyNoticesController < ApplicationController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
       format.js
+    end
+  end
+
+  def template_one
+    @privacy_notice = PrivacyNotice.find(params[:privacy_notice_id])
+    if @privacy_notice.data_tag
+      render :template_one
+    else
+      redirect_to root_path
+    end
+  end
+
+  def template_two
+    @privacy_notice = PrivacyNotice.find(params[:privacy_notice_id])
+    if @privacy_notice.data_tag.nil?
+      render :template_two
+    else
+      redirect_to root_path
     end
   end
 

@@ -5,7 +5,7 @@ class PagesController < ApplicationController
 
   def test
     @questions = Question.all
-    gon.questions = @questions
+    @privacy_notice = PrivacyNotice.find(params[:privacy_notice_id])
     render :test
   end
 end
