@@ -1,1 +1,12 @@
-<%= @privacy_notice.attributes %>
+<div class="container">
+  <div class="first-paraph">
+      Dans le cadre <%= @privacy_notice.type_of_operation %> Ubisoft Entertainment (107 avenue Henri Fréville, BP 10704, 35207 Rennes Cedex 2, France)
+      <% if @privacy_notice.organizer_under_contract %>
+        <%= @privacy_notice.agency_name %> <%= @privacy_notice.organizer %>
+      <% else %>
+        <%= @privacy_notice.organizer %>
+      <% end %>
+      pour vous permettre de participer au jeu concours, contacter les gagnants afin de remettre les prix
+  </div>
+</div>
+

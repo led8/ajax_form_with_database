@@ -32,9 +32,9 @@ class PrivacyNotice < ApplicationRecord
 
   def convert_organizer_under_contract
     if self.organizer_under_contract == "5"
-      self.convert_organizer_under_contract = true
+      self.organizer_under_contract = true
     elsif self.organizer_under_contract == "6"
-      self.convert_organizer_under_contract = false
+      self.organizer_under_contract = false
     end
   end
 
