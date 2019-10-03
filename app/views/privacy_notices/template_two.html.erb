@@ -6,7 +6,19 @@
       <% else %>
         <%= @privacy_notice.organizer %>
       <% end %>
-      pour vous permettre de participer au jeu concours, contacter les gagnants afin de remettre les prix
+      <% if @privacy_notice.shared_data %>
+        pour vous permettre de participer au jeu concours, contacter les gagnants afin de remettre les prix et <%= @privacy_notice.shared_data %>.
+        <% else %>
+          pour vous permettre de participer au jeu concours et contacter les gagnants afin de remettre les prix.
+      <% end %>
+  </div>
+
+  <div class="second-paraph">
+    <% @privacy_notice.reused_data.each do |data| %>
+      <% data.each do |key, value| %>
+        <%= value.last %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 
