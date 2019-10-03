@@ -16,6 +16,7 @@ gem 'sassc-rails'
 gem 'uglifier'
 gem 'webpacker'
 gem 'jquery-rails'
+gem 'gon'
 
 # Form
 gem 'simple_form'

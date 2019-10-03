@@ -1,5 +1,5 @@
 class PrivacyNotice < ApplicationRecord
-  serialize :data_tag, Array
+  #serialize :data_tag, Array
   serialize :reused_data, Array
 
   before_save :convert_type_of_operation
@@ -10,6 +10,7 @@ class PrivacyNotice < ApplicationRecord
   before_save :convert_environment
   before_save :convert_shared_data
   before_save :convert_reused_data
+  before_save :convert_data_tag
 
   private
 
@@ -104,6 +105,13 @@ class PrivacyNotice < ApplicationRecord
     if self.reused_data.include? "25"
       self.reused_data.delete "25"
       self.reused_data << { other: nil }
+    end
+  end
+
+  def convert_data_tag
+    if self.data_tag
+      #self.data_tag.gsub('[', '').gsub(']', '').gsub('{"value":', '').gsub('}', '').gsub('"', '').split(',')
+      self.data_tag = self.data_tag.gsub('[', '').gsub(']', '').gsub('{"value":', '').gsub('}', '').gsub('"', '')
     end
   end
 end

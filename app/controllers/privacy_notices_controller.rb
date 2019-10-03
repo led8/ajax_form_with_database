@@ -1,12 +1,17 @@
 class PrivacyNoticesController < ApplicationController
   before_action :set_privacy_notice, only: [:show]
 
+  def index
+    render :index
+  end
+
   def show
   end
 
   def new
     @privacy_notice = PrivacyNotice.new
     @questions = Question.all
+    @answers = Answer.all
   end
 
   def create
@@ -27,12 +32,10 @@ class PrivacyNoticesController < ApplicationController
   private
 
   def privacy_notice_params
-    params.permit(:type_of_operation, :organizer, :collected_data, :environment, :shared_data, :agency_name, data_tag:[], reused_data:[])
+    params.permit(:type_of_operation, :organizer, :collected_data, :environment, :shared_data, :agency_name, :data_tag, reused_data:[])
   end
 
   def set_privacy_notice
     @privacy_notice = PrivacyNotice.find(params[:id])
   end
 end
-
-# PrivacyNotice.last.reused_data.each{|data| p data[:survey] if data.has_key?(:survey)}

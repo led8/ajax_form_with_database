@@ -10,22 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_30_094505) do
+ActiveRecord::Schema.define(version: 2019_10_02_082418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
     t.string "label"
-    t.text "hint"
-    t.string "hint_header"
+    t.text "modal_content"
+    t.string "modal_header"
     t.string "answer_type"
     t.integer "order"
     t.bigint "question_id"
     t.text "value", default: [], array: true
-    t.string "hint_icon"
+    t.string "modal_request_icon"
     t.string "parameter"
-    t.text "hint_about_request"
+    t.text "modal_request_content"
+    t.boolean "modal_request", default: false
+    t.string "modal_request_header"
+    t.boolean "modal", default: false
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 

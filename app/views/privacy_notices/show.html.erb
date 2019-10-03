@@ -9,5 +9,5 @@
   <strong>Reused data : </strong>  <%= @privacy_notice.reused_data %><br>
   <strong>Organizer under contract : </strong>  <%= @privacy_notice.organizer_under_contract %><br>
   <strong>Agency name : </strong>  <%= @privacy_notice.agency_name %><br>
-  <strong>Data tag : </strong>  <%= @privacy_notice.data_tag %>
+  <strong>Data tag : </strong>  <%= serialize_data_tag(@privacy_notice.data_tag) %>
 </div>

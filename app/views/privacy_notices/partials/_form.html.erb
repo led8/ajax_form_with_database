@@ -10,22 +10,33 @@
         <div class="labels-container">
           <% question.answers.each do |answer| %>
             <% if answer.answer_type == "radio" %>
-              <%= render '././privacy_notices/partials/radio_form', answer: answer %>
+              <div class="radio-input">
+                <%= tag.input type: answer.answer_type, label: false, id: answer.order.to_s, value: answer.value,
+                              name: answer.parameter %>
+                <%= tag.label answer.label, for: answer.order.to_s %>
+              </div>
             <% elsif answer.answer_type == "text" %>
-              <%= render '././privacy_notices/partials/text_form', answer: answer %>
+              <div class="text-input">
+                <%= tag.label answer.label, for: answer.order.to_s %>
+                <%= tag.input type: answer.answer_type, label: false, id: answer.order.to_s, name: answer.parameter %>
+              </div>
             <% elsif answer.answer_type == "checkbox" %>
-              <%= render '././privacy_notices/partials/checkbox_form', answer: answer %>
-            <% elsif answer.answer_type == "select" %>
-              <%= render '././privacy_notices/partials/select_form', answer: answer %>
+              <div class="checkbox-input">
+                <%= tag.input type: answer.answer_type, label: false, id: answer.order.to_s, value: answer.value,
+                              name: "#{answer.parameter}[]" %>
+                <%= tag.label answer.label, for: answer.order.to_s %>
+              </div>
             <% end %>
           <% end %>
+            <div class="form-buttons current-btn button-<%= index + 1 %>">
+              <div class="previous-question hidden">Back</div>
+              <div class="next-question next-button purple-background hidden">Next</div>
+          </div>
         </div>
       </div>
     <% end %>
     <div class="form-buttons">
-      <div class="previous-question hidden">Back</div>
-      <%= submit_tag "Next", class: "next-question next-button purple-background hidden" %>
-      <!-- <div class="next-question next-button purple-background hidden">Next</div> -->
+      <%= submit_tag "Create", class: "end next-button purple-background hidden" %>
     </div>
   <% end %>
 </div>
