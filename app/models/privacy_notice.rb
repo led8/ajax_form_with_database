@@ -16,17 +16,17 @@ class PrivacyNotice < ApplicationRecord
 
   def convert_type_of_operation
     if self.type_of_operation == "1"
-      self.type_of_operation = "du jeu concours"
+      self.type_of_operation = "contest"
     elsif self.type_of_operation == "2"
-      self.type_of_operation = "de l'évènement"
+      self.type_of_operation = "event"
     end
   end
 
   def convert_organizer
     if self.organizer == "3"
-      self.organizer = "collecte et traite vos données personnelles"
+      self.organizer = "Ubisoft"
     elsif self.organizer == "4"
-      self.organizer = "de collecter et traiter les données personnelles suivantes"
+      self.organizer = "External agency"
     end
   end
 
@@ -41,9 +41,9 @@ class PrivacyNotice < ApplicationRecord
   def convert_agency_name
     @answers = Answer.all
     if self.agency_name == "7"
-      self.agency_name = "a chargé #{@answers.where(value: '7'.split).last.label}"
+      self.agency_name = "#{@answers.where(value: '7'.split).last.label}"
     elsif self.agency_name == "8"
-      self.agency_name = "a chargé '#{@answers.where(value: '7'.split).last.label}'"
+      self.agency_name = "#{@answers.where(value: '7'.split).last.label}"
     elsif self.agency_name == "9"
       self.agency_name = nil
     end
@@ -52,65 +52,64 @@ class PrivacyNotice < ApplicationRecord
   def convert_collected_data
     @answers = Answer.all
     if self.collected_data == "10"
-      self.collected_data = "#{@answers.where(value: '10'.split).last.label}"
+      self.collected_data = "Directly"
     elsif self.collected_data == "11"
-      self.collected_data = "#{@answers.where(value: '11'.split).last.label}"
+      self.collected_data = "Indirectly"
     elsif self.collected_data == "12"
-      self.collected_data = "#{@answers.where(value: '12'.split).last.label}"
+      self.collected_data = "Both"
     end
   end
 
   def convert_environment
     @answers = Answer.all
     if self.environment == "14"
-      self.environment = "#{@answers.where(value: '14'.split).last.label}"
+      self.environment = "Ubisoft"
     elsif self.environment == "15"
-      self.environment = "#{@answers.where(value: '15'.split).last.label}"
+      self.environment = "In-game"
     elsif self.environment == "16"
-      self.environment = "#{@answers.where(value: '16'.split).last.label}"
+      self.environment = "Third party"
     elsif self.environment == "17"
-      self.environment = "#{@answers.where(value: '17'.split).last.label}"
+      self.environment = "Social Network"
     end
   end
 
   def convert_shared_data
     if self.shared_data == "18"
-      self.shared_data = "partager le contenu que vous publierez"
+      self.shared_data = true
     elsif self.shared_data == "19"
-      self.shared_data = nil
+      self.shared_data = false
     end
   end
 
   def convert_reused_data
     if self.reused_data.include? "20"
       self.reused_data.delete "20"
-      self.reused_data << { in_game: nil }
+      self.reused_data << "in-game"
     end
     if self.reused_data.include? "21"
       self.reused_data.delete "21"
-      self.reused_data << { marketing: "à des fins promotionnelles et marketing/par les personnes destinataires des messages promotionn ou marketing intégrant votre contenu".split('/') }
+      self.reused_data << "marketing"
     end
     if self.reused_data.include? "22"
       self.reused_data.delete "22"
-      self.reused_data << { survey: "vous envoyer des enquêtes des satisfaction/vous envoie des enquêtes de satisfaction".split('/') }
+      self.reused_data << "survey"
     end
     if self.reused_data.include? "23"
       self.reused_data.delete "23"
-      self.reused_data << { stats: "pour élaborer des statistiques/réalise des statistiques".split('/') }
+      self.reused_data << "analytics"
     end
     if self.reused_data.include? "24"
       self.reused_data.delete "24"
-      self.reused_data << { promotional: "des offres promotionnelles.".split('.') }
+      self.reused_data << "promotional"
     end
     if self.reused_data.include? "25"
       self.reused_data.delete "25"
-      self.reused_data << { other: nil }
+      self.reused_data << "other"
     end
   end
 
   def convert_data_tag
     if self.data_tag
-      #self.data_tag.gsub('[', '').gsub(']', '').gsub('{"value":', '').gsub('}', '').gsub('"', '').split(',')
       self.data_tag = self.data_tag.gsub('[', '').gsub(']', '').gsub('{"value":', '').gsub('}', '').gsub('"', '')
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_02_082418) do
+ActiveRecord::Schema.define(version: 2019_10_04_080129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 2019_10_02_082418) do
   create_table "privacy_notices", force: :cascade do |t|
     t.string "type_of_operation"
     t.string "organizer"
-    t.text "collected_data"
+    t.string "collected_data"
     t.string "environment"
-    t.string "shared_data"
+    t.boolean "shared_data", default: false
     t.text "reused_data"
     t.boolean "organizer_under_contract", default: false
     t.string "agency_name"

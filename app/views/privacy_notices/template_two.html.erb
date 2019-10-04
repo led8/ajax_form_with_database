@@ -1,24 +1,19 @@
 <div class="container">
   <div class="first-paraph">
-      Dans le cadre <%= @privacy_notice.type_of_operation %> Ubisoft Entertainment (107 avenue Henri Fréville, BP 10704, 35207 Rennes Cedex 2, France)
-      <% if @privacy_notice.organizer_under_contract %>
-        <%= @privacy_notice.agency_name %> <%= @privacy_notice.organizer %>
-      <% else %>
-        <%= @privacy_notice.organizer %>
-      <% end %>
-      <% if @privacy_notice.shared_data %>
-        pour vous permettre de participer au jeu concours, contacter les gagnants afin de remettre les prix et <%= @privacy_notice.shared_data %>.
-        <% else %>
-          pour vous permettre de participer au jeu concours et contacter les gagnants afin de remettre les prix.
-      <% end %>
+    Dans le cadre <%= serialize_type_of_operation(@privacy_notice.type_of_operation) %>, Ubisoft Entertainment (107 avenue Henri Fréville, BP 10704, 35207 Rennes Cedex 2, France) <% if @privacy_notice.organizer_under_contract %> a chargé <%= @privacy_notice.agency_name %><% end %> <% if @privacy_notice.shared_data %>pour vous permettre de participer au jeu concours, contacter les gagnants afin de remettre les prix et partager le contenu que vous publierez<% else %>pour vous permettre de participer au jeu concours et contacter les gagnants afin de remettre les prix<% end %>.
   </div>
 
   <div class="second-paraph">
-    <% @privacy_notice.reused_data.each do |data| %>
-      <% data.each do |key, value| %>
-        <%= value.last %>
-      <% end %>
-    <% end %>
+  </div>
+
+  <div class="third-paraph">
+  </div>
+
+  <div class="fourth-paraph">
+  </div>
+
+  <div class="fifth-paraph">
   </div>
 </div>
 
+<br><br><br><br><br><br><br><br><br><%= @privacy_notice.attributes %>

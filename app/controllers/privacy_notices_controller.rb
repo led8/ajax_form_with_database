@@ -39,7 +39,7 @@ class PrivacyNoticesController < ApplicationController
 
   def template_two
     @privacy_notice = PrivacyNotice.find(params[:privacy_notice_id])
-    if @privacy_notice.data_tag.nil?
+    if @privacy_notice.data_tag.empty?
       render :template_two
     else
       redirect_to root_path

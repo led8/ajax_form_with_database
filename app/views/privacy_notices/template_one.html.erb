@@ -1,12 +1,19 @@
+<div class="container">
+  <div class="first-paraph">
+    Dans le cadre <%= serialize_type_of_operation(@privacy_notice.type_of_operation) %>, Ubisoft Entertainment (107 avenue Henri Fréville, BP 10704, 35207 Rennes Cedex 2, France) <% if @privacy_notice.organizer_under_contract %> a chargé <%= @privacy_notice.agency_name %><% end %> <% if @privacy_notice.shared_data %>pour vous permettre de participer au jeu concours, contacter les gagnants afin de remettre les prix et partager le contenu que vous publierez<% else %>pour vous permettre de participer au jeu concours et contacter les gagnants afin de remettre les prix<% end %> :
+  </div>
 
-Hello, so now i'm going to show you the prototype of the Privacy Notices Generator. It's a fake app, a draft MVP from which i'm building the real one. The idea was to imagine to workflow and the process, and iterate on it until something fine.
+  <div class="second-paraph">
+  </div>
 
-So each input is checked in in advance, let's go.
+  <div class="third-paraph">
+  </div>
 
-The authenticate step is necessry for analytics. I need it store the data from the user and improve the app.
+  <div class="fourth-paraph">
+  </div>
 
-Each input has his own flow.
+  <div class="fifth-paraph">
+  </div>
+</div>
 
-Here you have some hint that give you information.
-
-If I click on this input, I have more options to choose before to be redirected to the normal flow.
+<br><br><br><br><br><br><br><br><br><%= @privacy_notice.attributes %>
