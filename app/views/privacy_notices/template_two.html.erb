@@ -1,19 +1,61 @@
 <div class="container">
   <div class="first-paraph">
-    Dans le cadre <%= serialize_type_of_operation(@privacy_notice.type_of_operation) %>, Ubisoft Entertainment (107 avenue Henri Fréville, BP 10704, 35207 Rennes Cedex 2, France) <% if @privacy_notice.organizer_under_contract %> a chargé <%= @privacy_notice.agency_name %><% end %> <% if @privacy_notice.shared_data %>pour vous permettre de participer au jeu concours, contacter les gagnants afin de remettre les prix et partager le contenu que vous publierez<% else %>pour vous permettre de participer au jeu concours et contacter les gagnants afin de remettre les prix<% end %>.
+    As part <%= serialize_type_of_operation(@privacy_notice.type_of_operation) %>, Ubisoft Entertainment (107 avenue Henri Fréville, BP 10704, 35207 Rennes Cedex 2, France) <% if @privacy_notice.organizer_under_contract %> outsourced <%= @privacy_notice.agency_name %><% end %> <%= serialize_organizer(@privacy_notice.organizer) %> <%= serialize_collected_data(@privacy_notice.collected_data) %> <% if @privacy_notice.shared_data %>in order to allow you to participate in the contest, contact winners to give the awards and shared the content you will publish<% else %>in order to allow you to participate in the contest and contact winners to give the awards<% end %>.
   </div>
 
-  <div class="second-paraph">
-  </div>
+  <% if !@privacy_notice.reused_data.empty? %>
+    <div class="second-paraph">
+      Your personal data may be used
+      <% @privacy_notice.reused_data.each do |param| %>
+        <% if @privacy_notice.reused_data.length == 1 %>
+          <%= param %>.
+        <% else %>
+          <% if param == @privacy_notice.reused_data.last %>
+            <%= "and #{param}." %>
+          <% else %>
+            <% if param == @privacy_notice.reused_data[-2] %>
+              <%= param %>
+            <% else %>
+              <%= "#{param}, " %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+      These uses are based on the execution of this contract with Ubisoft.
+    </div>
 
-  <div class="third-paraph">
-  </div>
+    <div class="third-paraph">
+      <% if !@privacy_notice.accessible_data.empty? %>
+        Your personal data will be accessible by Ubisoft, its affiliates and subcontractor, the users of the media on which you will publish your content as part of the contest and <%= @privacy_notice.accessible_data.last %>.
+      <% else %>
+        Your personal data will be accessible by Ubisoft, its affiliates and subcontractor and the users of the media on which you will publish your content as part of the contest.
+      <% end %>
+      <% if !@privacy_notice.retained_data.empty? %>
+        Your personal data will be retained until you delete the content that you shared and as long as you agree that Ubisoft
+          <% @privacy_notice.retained_data.each do |param| %>
+            <% if @privacy_notice.retained_data.length == 1 %>
+              <%= param %>.
+            <% else %>
+              <% if param == @privacy_notice.retained_data.last %>
+                <%= "or #{param}." %>
+              <% else %>
+                <% if param == @privacy_notice.retained_data[-2] %>
+                  <%= param %>
+                <% else %>
+                  <%= "#{param}, " %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>.
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="fourth-paraph">
+    Your informations may be transfered to third countries to the European Union,  either because they carry out   an adequate level of protection recognized by the European Commission or because the level of protection is carried out by the signature contractual clauses validated by the European Commission.
   </div>
 
   <div class="fifth-paraph">
+    You can withdraw you consent at any time and claim your right to access, to modify, to oppose, to delete, and your portability right for every personal data by contacting the Data Protection Officer. If the use of your personal data is prejudicial, made a complaint to the competent autority of your country.
   </div>
 </div>
-
-<br><br><br><br><br><br><br><br><br><%= @privacy_notice.attributes %>

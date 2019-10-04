@@ -11,9 +11,9 @@
   <strong>Agency name : </strong>  <%= @privacy_notice.agency_name %><br>
   <strong>Data tag : </strong>  <%= @privacy_notice.data_tag %><br><br>
 
-  <% if !@privacy_notice.data_tag.empty? && @privacy_notice.collected_data != "Directly" %>
-    <%= link_to "download", template_one_path(@privacy_notice) %>
-  <% else %>
+  <% if @privacy_notice.data_tag.empty? %>
     <%= link_to "download", template_two_path(@privacy_notice) %>
+  <% else %>
+    <%= link_to "download", template_one_path(@privacy_notice) %>
   <% end %>
 </div>

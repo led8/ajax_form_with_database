@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_04_080129) do
+ActiveRecord::Schema.define(version: 2019_10_04_145326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2019_10_04_080129) do
     t.boolean "organizer_under_contract", default: false
     t.string "agency_name"
     t.text "data_tag"
+    t.text "accessible_data"
+    t.text "retained_data"
   end
 
   create_table "questions", force: :cascade do |t|

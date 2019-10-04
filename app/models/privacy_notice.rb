@@ -1,6 +1,8 @@
 class PrivacyNotice < ApplicationRecord
   #serialize :data_tag, Array
   serialize :reused_data, Array
+  serialize :accessible_data, Array
+  serialize :retained_data, Array
 
   before_save :convert_type_of_operation
   before_save :convert_organizer
@@ -9,6 +11,8 @@ class PrivacyNotice < ApplicationRecord
   before_save :convert_collected_data
   before_save :convert_environment
   before_save :convert_shared_data
+  before_save :convert_accessible_data
+  before_save :convert_retained_data
   before_save :convert_reused_data
   before_save :convert_data_tag
 
@@ -84,28 +88,38 @@ class PrivacyNotice < ApplicationRecord
   def convert_reused_data
     if self.reused_data.include? "20"
       self.reused_data.delete "20"
-      self.reused_data << "in-game"
+      self.reused_data << "to create in-game content"
     end
     if self.reused_data.include? "21"
       self.reused_data.delete "21"
-      self.reused_data << "marketing"
+      self.reused_data << "to create promotional and marketing content"
     end
     if self.reused_data.include? "22"
       self.reused_data.delete "22"
-      self.reused_data << "survey"
+      self.reused_data << "to send customer satisfaction survey"
     end
     if self.reused_data.include? "23"
       self.reused_data.delete "23"
-      self.reused_data << "analytics"
+      self.reused_data << "to conduct analytics about user experience"
     end
     if self.reused_data.include? "24"
       self.reused_data.delete "24"
-      self.reused_data << "promotional"
+      self.reused_data << "to send promotional offers"
     end
     if self.reused_data.include? "25"
       self.reused_data.delete "25"
       self.reused_data << "other"
     end
+  end
+
+  def convert_accessible_data
+    self.accessible_data << "by recipients of promotional or marketing messages" if self.reused_data.include? "21"
+  end
+
+  def convert_retained_data
+    self.retained_data << "to send you satisfaction survey" if self.reused_data.include? "22"
+    self.retained_data << "manage analytics" if self.reused_data.include? "23"
+    self.retained_data << "to send you promotional offers" if self.reused_data.include? "24"
   end
 
   def convert_data_tag
