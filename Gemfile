@@ -19,7 +19,7 @@ gem 'jquery-rails'
 gem 'gon'
 
 # Form
-gem 'simple_form'
+gem "simple_form", ">= 5.0.0"
 
 # DRY
 gem "responders"
