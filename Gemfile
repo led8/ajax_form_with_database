@@ -21,6 +21,12 @@ gem 'gon'
 # Form
 gem 'simple_form'
 
+# DRY
+gem "responders"
+
+# Download word docs
+gem 'htmltoword'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
