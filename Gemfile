@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.4.4'
+ruby '2.6.3'
 
 # Server, Database, hosting
 gem 'bootsnap', require: false
