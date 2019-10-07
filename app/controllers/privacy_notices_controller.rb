@@ -1,5 +1,6 @@
 class PrivacyNoticesController < ApplicationController
   before_action :set_privacy_notice, only: [:show]
+  respond_to :docx
 
   def index
     render :index
@@ -30,19 +31,27 @@ class PrivacyNoticesController < ApplicationController
 
   def template_one
     @privacy_notice = PrivacyNotice.find(params[:privacy_notice_id])
-    if @privacy_notice.data_tag.empty? == false
-      render :template_one
-    else
-      redirect_to root_path
+    respond_to do |format|
+      if @privacy_notice.data_tag.empty? == false
+        format.docx do
+          render docx: 'template_one', filename: 'privacy_notice.docx'
+        end
+      else
+        redirect_to root_path
+      end
     end
   end
 
   def template_two
     @privacy_notice = PrivacyNotice.find(params[:privacy_notice_id])
-    if @privacy_notice.data_tag.empty?
-      render :template_two
-    else
-      redirect_to root_path
+    respond_to do |format|
+      if @privacy_notice.data_tag.empty?
+        format.docx do
+          render docx: 'template_two', filename: 'privacy_notice.docx'
+        end
+      else
+        redirect_to root_path
+      end
     end
   end
 
