@@ -1,9 +1,23 @@
-<label><input type='checkbox'> TOGGLE OFF</label>
+<!-- <label><input type='checkbox'> TOGGLE OFF</label>
 
 <h2>text input</h2>
 <input type='text' name='tags' placeholder='write some tags' value='foo, bar,buzz, bar'>
 
 <h2>textarea</h2>
-<textarea name='tags2' placeholder='Movie names'>The Matrix, Pulp Fiction, Mad Max</textarea>
+<textarea name='tags2' placeholder='Movie names'>The Matrix, Pulp Fiction, Mad Max</textarea> -->
 
-<%= @privacy_notice.attributes %><br><br><br>
+
+<%= form_tag @privacy_notice do %>
+  <div class="question-<%= @questions.first.position %>">
+    <%= @questions.first.title %>
+    <% @questions.first.answers.each do |answer| %>
+      <%= tag.input type: answer.answer_type, label: false, id: answer.order.to_s, value: answer.value,
+                    name: answer.parameter %>
+      <%= tag.label answer.label, for: answer.order.to_s %>
+    <% end %>
+    <button class="btn-<%= @questions.first.position %>">NEXT</button>
+  </div>
+<% end %>
+
+
+

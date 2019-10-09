@@ -5,7 +5,7 @@
 <div class="right-form">
   <%= form_tag @privacy_notice do %>
     <% @questions.each_with_index do |question, index| %>
-      <div class="current-qst question-<%= index + 1 %> <%= question.position == 1 ? '' : 'hidden'%>">
+      <div class="current-qst question-<%= index + 1 %> <%= question.position == 1 ? '' : 'hidden' %>">
         <div class="question-title"><%= question.title %></div>
         <div class="labels-container">
           <% question.answers.each do |answer| %>

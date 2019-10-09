@@ -12,6 +12,3 @@ tagify2 = new Tagify(input2, {
 document.querySelector('input[type=checkbox]').addEventListener('change', function(){
     document.body.classList[this.checked ? 'add' : 'remove']('disabled');
 })
-
-console.log(gon.questions)
-
