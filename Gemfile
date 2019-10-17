@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.4.4'
+ruby '2.6.3'
 
 # Server, Database, hosting
 gem 'bootsnap', require: false
@@ -20,7 +20,7 @@ gem 'gon'
 gem 'selectize-rails'
 
 # Form
-gem 'simple_form'
+gem "simple_form", ">= 5.0.0"
 
 # DRY
 gem "responders"
