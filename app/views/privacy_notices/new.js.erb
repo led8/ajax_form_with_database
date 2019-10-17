@@ -1,149 +1,149 @@
-$('.privacy-notice-container').html("<%= j render './privacy_notices/partials/form', privacy_notice: @privacy_notice %>")
+// $('.privacy-notice-container').html("<%= j render './privacy_notices/partials/form', privacy_notice: @privacy_notice %>")
 
-var end = $('.end');
-var previousQuestion = $('.previous-question');
-var currentQuestion = $('.current-qst');
-var radioButton = $("input[type=radio]");
-var checkboxButton = $("input[type=checkbox]");
-var textInput = $('input[name=data_tag]');
-var form = $('form');
-var currentButton = $('.current-btn');
-// var hintButton = $('.hint'),
-var count = 1;
+// var end = $('.end');
+// var previousQuestion = $('.previous-question');
+// var currentQuestion = $('.current-qst');
+// var radioButton = $("input[type=radio]");
+// var checkboxButton = $("input[type=checkbox]");
+// var textInput = $('input[name=data_tag]');
+// var form = $('form');
+// var currentButton = $('.current-btn');
+// // var hintButton = $('.hint'),
+// var count = 1;
 
-// HandleNextQuestion
-radioButton.each(function(){
-  var idVal = $(this).attr("id")
+// // HandleNextQuestion
+// radioButton.each(function(){
+//   var idVal = $(this).attr("id")
 
-  $(this).click(function(){
-    if($(this).prop("checked") ===  true) {
+//   $(this).click(function(){
+//     if($(this).prop("checked") ===  true) {
 
-      count += 1
-      let currentQst = currentQuestion.hasClass(`question-${count}`)
-      let currentBtn = currentButton.hasClass(`button-${count}`)
+//       count += 1
+//       let currentQst = currentQuestion.hasClass(`question-${count}`)
+//       let currentBtn = currentButton.hasClass(`button-${count}`)
 
-      if(currentQst && idVal != "3" && idVal != "10" && idVal != "11" && idVal != "12") {
-        setTimeout(function(){
-          $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
-        }, 300)
-        setTimeout(function(){
-          $(`form .question-${count - 1}`).fadeOut(200, function(){$(this).addClass('hidden')});
-        }, 300)
-      }
-      else if(currentQst && idVal == "3"){
-        count = 5
-        setTimeout(function(){
-          $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
-        }, 300)
-        setTimeout(function(){
-          $(`form .question-${count - 3}`).fadeOut(200, function(){$(this).addClass('hidden')});
-        }, 300)
-      }
-      else if(currentQst && idVal == "10") {
-        count = 7
-        setTimeout(function(){
-          $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
-        }, 300)
-        setTimeout(function(){
-          $(`form .question-${count - 2}`).fadeOut(200, function(){$(this).addClass('hidden')});
-        }, 300)
-      }
-      else if(currentQst && (idVal == "11" || idVal == "12")){
-        count = 6
-        setTimeout(function(){
-          $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
-        }, 300)
-        setTimeout(function(){
-          $(`form .question-${count - 1}`).fadeOut(200, function(){$(this).addClass('hidden')});
-        }, 300)
-      }
-      $('.tagify').keyup(function(){
-        if(textInput.val().includes('value')){
-          setTimeout(function(){
-            $(`form .button-${count} .next-question`).fadeIn(200, function(){$(this).removeClass('hidden')});
-          }, 300)
-        }
-      });
-      $(`form .button-${count} .next-question`).click(function(){
-        count += 1
-        setTimeout(function(){
-          $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
-        }, 300)
-        setTimeout(function(){
-          $(`form .question-${count - 1}`).fadeOut(200, function(){$(this).addClass('hidden')});
-        }, 300)
-      })
-    }
-  });
-});
-
-  // Previous question
-  // previous.click(function() {
-  //   count -= 1
-  //   let current = currentQuestion.hasClass(`question-${count}`)
-
-  //   if(current) {
-  //     setTimeout(function(){
-  //       $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
-  //     }, 300)
-  //     setTimeout(function(){
-  //        $(`form .question-${count + 1}`).fadeOut(200, function(){$(this).removeClass('hidden')});
-  //     }, 300)
-  //   }
-  //   if(count <= 1){
-  //     setTimeout(function(){
-  //       previousQuestion.addClass('hidden');
-  //     }, 400)
-  //   }
-  // });
-
-// Enf of form
-checkboxButton.each(function(){
-  var idVal = $(this).attr("id")
-  $(this).click(function(){
-    if($(this).prop("checked") === true){
-      console.log(idVal)
-      setTimeout(function(){
-        end.removeClass('hidden');
-      }, 400)
-    }
-  })
-});
-
-// Prevent enter submit
-form.on('keypress', e => {
-  if (e.keyCode == 13) {
-    return false;
-  }
-});
-
-
-// $("input[type='radio']:checked").each(function() {
-//   var idVal = $(this).attr("id");
-//   alert($("label[for='"+idVal+"']").text());
+//       if(currentQst && idVal != "3" && idVal != "10" && idVal != "11" && idVal != "12") {
+//         setTimeout(function(){
+//           $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
+//         }, 300)
+//         setTimeout(function(){
+//           $(`form .question-${count - 1}`).fadeOut(200, function(){$(this).addClass('hidden')});
+//         }, 300)
+//       }
+//       else if(currentQst && idVal == "3"){
+//         count = 5
+//         setTimeout(function(){
+//           $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
+//         }, 300)
+//         setTimeout(function(){
+//           $(`form .question-${count - 3}`).fadeOut(200, function(){$(this).addClass('hidden')});
+//         }, 300)
+//       }
+//       else if(currentQst && idVal == "10") {
+//         count = 7
+//         setTimeout(function(){
+//           $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
+//         }, 300)
+//         setTimeout(function(){
+//           $(`form .question-${count - 2}`).fadeOut(200, function(){$(this).addClass('hidden')});
+//         }, 300)
+//       }
+//       else if(currentQst && (idVal == "11" || idVal == "12")){
+//         count = 6
+//         setTimeout(function(){
+//           $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
+//         }, 300)
+//         setTimeout(function(){
+//           $(`form .question-${count - 1}`).fadeOut(200, function(){$(this).addClass('hidden')});
+//         }, 300)
+//       }
+//       $('.tagify').keyup(function(){
+//         if(textInput.val().includes('value')){
+//           setTimeout(function(){
+//             $(`form .button-${count} .next-question`).fadeIn(200, function(){$(this).removeClass('hidden')});
+//           }, 300)
+//         }
+//       });
+//       $(`form .button-${count} .next-question`).click(function(){
+//         count += 1
+//         setTimeout(function(){
+//           $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
+//         }, 300)
+//         setTimeout(function(){
+//           $(`form .question-${count - 1}`).fadeOut(200, function(){$(this).addClass('hidden')});
+//         }, 300)
+//       })
+//     }
+//   });
 // });
 
-// function HandleModal(hintButton){
-//   hintButton.each(function(){
-//     $(this).click(function(){
-//       console.log($(this))
-//       var hintId = $(this).attr('id')
-//       $('#answer-modal-container').removeAttr('class').addClass(hintId)
-//       $('body').addClass('modal-active')
-//     })
-//   });
-//   $('#answer-modal-container').click(function(){
-//     $(this).addClass('out')
-//     $('body').removeClass('modal-active')
-//   });
-// };
-// HandleModal(hintButton)
+//   // Previous question
+//   // previous.click(function() {
+//   //   count -= 1
+//   //   let current = currentQuestion.hasClass(`question-${count}`)
 
-// Tagigy
-var tagifyInput = document.querySelector('input[name=data_tag]'),
-    tagify1 = new Tagify(tagifyInput, { whitelist : ['Number of hours spent on game', 'Participation in a beta of a game',
-                                                     'Participation in event', 'Posts on social networks', 'Number of followers',
-                                                     'Number of views on videos'] });
+//   //   if(current) {
+//   //     setTimeout(function(){
+//   //       $(`form .question-${count}`).fadeIn(200, function(){$(this).removeClass('hidden')});
+//   //     }, 300)
+//   //     setTimeout(function(){
+//   //        $(`form .question-${count + 1}`).fadeOut(200, function(){$(this).removeClass('hidden')});
+//   //     }, 300)
+//   //   }
+//   //   if(count <= 1){
+//   //     setTimeout(function(){
+//   //       previousQuestion.addClass('hidden');
+//   //     }, 400)
+//   //   }
+//   // });
+
+// // Enf of form
+// checkboxButton.each(function(){
+//   var idVal = $(this).attr("id")
+//   $(this).click(function(){
+//     if($(this).prop("checked") === true){
+//       console.log(idVal)
+//       setTimeout(function(){
+//         end.removeClass('hidden');
+//       }, 400)
+//     }
+//   })
+// });
+
+// // Prevent enter submit
+// form.on('keypress', e => {
+//   if (e.keyCode == 13) {
+//     return false;
+//   }
+// });
+
+
+// // $("input[type='radio']:checked").each(function() {
+// //   var idVal = $(this).attr("id");
+// //   alert($("label[for='"+idVal+"']").text());
+// // });
+
+// // function HandleModal(hintButton){
+// //   hintButton.each(function(){
+// //     $(this).click(function(){
+// //       console.log($(this))
+// //       var hintId = $(this).attr('id')
+// //       $('#answer-modal-container').removeAttr('class').addClass(hintId)
+// //       $('body').addClass('modal-active')
+// //     })
+// //   });
+// //   $('#answer-modal-container').click(function(){
+// //     $(this).addClass('out')
+// //     $('body').removeClass('modal-active')
+// //   });
+// // };
+// // HandleModal(hintButton)
+
+// // Tagigy
+// var tagifyInput = document.querySelector('input[name=data_tag]'),
+//     tagify1 = new Tagify(tagifyInput, { whitelist : ['Number of hours spent on game', 'Participation in a beta of a game',
+//                                                      'Participation in event', 'Posts on social networks', 'Number of followers',
+//                                                      'Number of views on videos'] });
 
 
 

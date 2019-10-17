@@ -17,6 +17,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'jquery-rails'
 gem 'gon'
+gem 'selectize-rails'
 
 # Form
 gem 'simple_form'

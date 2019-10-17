@@ -1,23 +1,14 @@
-<!-- <label><input type='checkbox'> TOGGLE OFF</label>
+<div class="form-group" style="position: absolute; top: 50%; right: 50%;">
+  <%= form_for @privacy_notice do %>
 
-<h2>text input</h2>
-<input type='text' name='tags' placeholder='write some tags' value='foo, bar,buzz, bar'>
-
-<h2>textarea</h2>
-<textarea name='tags2' placeholder='Movie names'>The Matrix, Pulp Fiction, Mad Max</textarea> -->
+  <%= select_tag @answers.where(question: 6).last.parameter.to_sym, options_for_select([ "7 derniers jours", "14 derniers jours", "30 derniers jours", "Depuis l'an dernier" ]), id: "created-at-input", class: "selectize", multiple: :true %>
 
 
-<%= form_tag @privacy_notice do %>
-  <div class="question-<%= @questions.first.position %>">
-    <%= @questions.first.title %>
-    <% @questions.first.answers.each do |answer| %>
-      <%= tag.input type: answer.answer_type, label: false, id: answer.order.to_s, value: answer.value,
-                    name: answer.parameter %>
-      <%= tag.label answer.label, for: answer.order.to_s %>
-    <% end %>
-    <button class="btn-<%= @questions.first.position %>">NEXT</button>
+    <%#= select_tag :privacy_notice_id, options_for_select(['numbers of views', 'numbers fo followers']),
+                   { multiple: true, class: "selectize" } %>
+  <% end %>
+  <div class="button">
+    Next
   </div>
-<% end %>
-
-
+</div>
 
