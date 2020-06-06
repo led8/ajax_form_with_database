@@ -160,7 +160,7 @@ GEM
       sprockets-rails
       tilt
     selectize-rails (0.12.6)
-    simple_form (4.1.0)
+    simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     spring (2.1.0)
@@ -192,7 +192,7 @@ GEM
       railties (>= 4.2)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.4)
+    websocket-extensions (0.1.5)
 
 PLATFORMS
   ruby
@@ -216,7 +216,7 @@ DEPENDENCIES
   responders
   sassc-rails
   selectize-rails
-  simple_form
+  simple_form (>= 5.0.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier
