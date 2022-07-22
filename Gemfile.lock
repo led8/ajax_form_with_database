@@ -160,9 +160,9 @@ GEM
       sprockets-rails
       tilt
     selectize-rails (0.12.6)
-    simple_form (4.1.0)
-      actionpack (>= 5.0)
-      activemodel (>= 5.0)
+    simple_form (5.1.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -177,7 +177,7 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
-    tzinfo (1.2.5)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
@@ -216,7 +216,7 @@ DEPENDENCIES
   responders
   sassc-rails
   selectize-rails
-  simple_form
+  simple_form (>= 5.0.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier
